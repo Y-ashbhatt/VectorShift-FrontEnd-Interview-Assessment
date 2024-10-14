@@ -1,0 +1,26 @@
+/* Global Styles */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  --bg-color: #f0f0f0; /* Light background */
+  --text-color: #333; /* Dark text */
+  --code-color: #d63384; /* Code text color */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5; /* Improved line height for readability */
+}
+
+code {
+  font-family: var(--font-mono);
+  background-color: #f8f9fa; /* Light gray background for code blocks */
+  border-radius: 4px; /* Slightly rounded corners for code blocks */
+  padding: 0.2em 0.4em; /* Spacing around code text */
+  color: var(--code-color); /* Custom color for code text */
+}
