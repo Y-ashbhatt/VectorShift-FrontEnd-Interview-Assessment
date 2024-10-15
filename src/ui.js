@@ -40,6 +40,7 @@ const selector = (state) => ({
   onNodesChange: state.onNodesChange,
   onEdgesChange: state.onEdgesChange,
   onConnect: state.onConnect,
+  updateNodeHandles: state.updateNodeHandles, // Add handle update functionality from store
 });
 
 export const PipelineUI = () => {
@@ -54,6 +55,7 @@ export const PipelineUI = () => {
     onNodesChange,
     onEdgesChange,
     onConnect,
+    updateNodeHandles, // Ensure handle update is available
   } = useStore(selector, shallow);
 
   // Initialize node data
