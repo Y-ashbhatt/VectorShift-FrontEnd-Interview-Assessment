@@ -1,25 +1,24 @@
-import { useState, useRef, useCallback } from 'react';
-import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
-import { useStore } from './store';
-import { shallow } from 'zustand/shallow';
+import { useState, useRef, useCallback, useEffect } from "react";
+import ReactFlow, { Controls, Background, MiniMap } from "reactflow";
+import { useStore } from "./store";
+import { shallow } from "zustand/shallow";
 
-// Import node components
-import { InputNode } from './nodes/inputNode';
-import { LLMNode } from './nodes/llmNode';
-import { OutputNode } from './nodes/outputNode';
-import { TextNode } from './nodes/textNode';
-import { NumberInputNode } from './nodes/numberInput';
-import { BooleanInputNode } from './nodes/booleanInputNode';
-import { DateInputNode } from './nodes/dateInputNode';
-import { MarkdownNode } from './nodes/markdownNode';
-import { ImageOutputNode } from './nodes/imageOutputNode';
-
-import 'reactflow/dist/style.css';
+//Import node components
+import { InputNode } from "./nodes/inputNode";
+import { LLMNode } from "./nodes/llmNode";
+import { OutputNode } from "./nodes/outputNode";
+import { TextNode } from "./nodes/textNode";
+import { NumberInputNode } from "./nodes/numberInput";
+import { BooleanInputNode } from "./nodes/booleanInputNode";
+import { DateInputNode } from "./nodes/dateInputNode";
+import { MarkdownNode } from "./nodes/markdownNode";
+import { ImageOutputNode } from "./nodes/imageOutputNode";
+import "reactflow/dist/style.css";
 
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
 
-// Define node types
+// Define node types (your node components)
 const nodeTypes = {
   customInput: InputNode,
   llm: LLMNode,
@@ -43,10 +42,10 @@ const selector = (state) => ({
   updateNodeHandles: state.updateNodeHandles, // Add handle update functionality from store
 });
 
-export const PipelineUI = () => {
+export const PipelineUI = ({ updatePipelineData }) => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  
+
   const {
     nodes,
     edges,
@@ -57,6 +56,12 @@ export const PipelineUI = () => {
     onConnect,
     updateNodeHandles, // Ensure handle update is available
   } = useStore(selector, shallow);
+
+  // Update nodes and edges whenever they change
+  useEffect(() => {
+    updatePipelineData(nodes, edges);
+  }, [nodes, edges, updatePipelineData]);
+
 
   // Initialize node data
   const getInitNodeData = (nodeID, type) => ({ id: nodeID, nodeType: type });
@@ -103,6 +108,7 @@ export const PipelineUI = () => {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
   }, []);
+
 
   return (
     <div ref={reactFlowWrapper} className="w-full h-[70vh]">
