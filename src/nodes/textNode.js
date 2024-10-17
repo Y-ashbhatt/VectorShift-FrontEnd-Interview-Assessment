@@ -47,6 +47,8 @@ export const TextNode = ({ id, data }) => {
         <label className="block text-sm font-medium text-gray-700">
           Text:
           <br />
+
+          
           <textarea
             ref={textAreaRef}
             value={currText}

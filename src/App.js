@@ -7,13 +7,13 @@ function App() {
   const [nodes, setNodes] = useState([]); // State to hold nodes
   const [edges, setEdges] = useState([]); // State to hold edges
 
-  // Function to handle the submission (can be customized)
+  // Function to handle the submission 
   const handleSubmit = async () => {
-    // Here you could perform any actions needed on submission
+    // perform actions needed on submission
     console.log('Submitting:', { nodes, edges });
   };
 
-  // Function to update nodes and edges, this can be defined based on your PipelineUI implementation
+  // Function to update nodes and edges
   const updatePipelineData = (newNodes, newEdges) => {
     setNodes(newNodes);
     setEdges(newEdges);

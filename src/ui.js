@@ -18,7 +18,7 @@ import "reactflow/dist/style.css";
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
 
-// Define node types (your node components)
+// Define node types
 const nodeTypes = {
   customInput: InputNode,
   llm: LLMNode,

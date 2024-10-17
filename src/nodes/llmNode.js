@@ -25,7 +25,7 @@ export const LLMNode = ({ id }) => {
                 position={Position.Right}
                 id={`${id}-response`}
             />
-            <div>This is a LLM.</div>
+            <div className=" w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#420d8b] placeholder-gray-400 ">This is a LLM.</div>
         </NodeBase>
     );
 };
